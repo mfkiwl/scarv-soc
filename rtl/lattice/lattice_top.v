@@ -22,6 +22,9 @@ parameter           BRAM_RAM_SIZE      = 1024;
 // Turn off the AXI bridge, since it isn't being used.
 parameter           IC_ENABLE_AXI_BRIDGE = 0;
 
+// Enable XCrypto support for the SCARV CPU?
+parameter SCARV_CPU_XCRYPTO_ENABLE = 0;
+
 //
 // Clock / reset buffering.
 // ------------------------------------------------------------
@@ -76,7 +79,8 @@ wire [31:0] m0_rdata          = 0; //
 scarv_soc #(
 .BRAM_ROM_SIZE(BRAM_ROM_SIZE),
 .BRAM_RAM_SIZE(BRAM_RAM_SIZE),
-.IC_ENABLE_AXI_BRIDGE(IC_ENABLE_AXI_BRIDGE)
+.IC_ENABLE_AXI_BRIDGE(IC_ENABLE_AXI_BRIDGE),
+.SCARV_CPU_XCRYPTO_ENABLE(SCARV_CPU_XCRYPTO_ENABLE)
 ) i_scarv_soc (
 .g_clk            (g_clk            ),
 .g_resetn         (g_resetn         ),
