@@ -48,6 +48,10 @@ parameter SCARV_CPU_PC_RESET_VALUE = 32'h1000_0000;
 // Enable XCrypto support for the SCARV CPU?
 parameter SCARV_CPU_XCRYPTO_ENABLE = 1;
 
+// Trace the entire instruction word down the pipeline.
+parameter SCARV_CPU_TRACE_INSTR_WORD = 1'b1;
+
+
 //
 // BRAM Parameters
 // ------------------------------------------------------------
@@ -183,9 +187,9 @@ wire [31:0] ram_dmem_rdata       ; // Read data
 
 frv_core #(
 .FRV_PC_RESET_VALUE (SCARV_CPU_PC_RESET_VALUE   ),
-.TRACE_INSTR_WORD   (1'b1                       ),
-.BRAM_REGFILE       (1'b1                       ),
-.XC_CLASS_BASELINE  (SCARV_CPU_XCRYPTO_ENABLE   )
+.XC_CLASS_BASELINE  (SCARV_CPU_XCRYPTO_ENABLE   ),
+.TRACE_INSTR_WORD   (SCARV_CPU_TRACE_INSTR_WORD ),
+.BRAM_REGFILE       (1'b1                       )
 ) i_scarv_cpu(
 .g_clk          (g_clk              ), // global clock
 .g_resetn       (g_resetn           ), // synchronous reset

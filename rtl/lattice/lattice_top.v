@@ -25,6 +25,10 @@ parameter           IC_ENABLE_AXI_BRIDGE = 0;
 // Enable XCrypto support for the SCARV CPU?
 parameter SCARV_CPU_XCRYPTO_ENABLE = 0;
 
+// Trace the entire instruction word down the pipeline.
+parameter SCARV_CPU_TRACE_INSTR_WORD = 1'b0;
+
+
 //
 // Clock / reset buffering.
 // ------------------------------------------------------------
@@ -80,7 +84,8 @@ scarv_soc #(
 .BRAM_ROM_SIZE(BRAM_ROM_SIZE),
 .BRAM_RAM_SIZE(BRAM_RAM_SIZE),
 .IC_ENABLE_AXI_BRIDGE(IC_ENABLE_AXI_BRIDGE),
-.SCARV_CPU_XCRYPTO_ENABLE(SCARV_CPU_XCRYPTO_ENABLE)
+.SCARV_CPU_XCRYPTO_ENABLE(SCARV_CPU_XCRYPTO_ENABLE),
+.SCARV_CPU_TRACE_INSTR_WORD(SCARV_CPU_TRACE_INSTR_WORD)
 ) i_scarv_soc (
 .g_clk            (g_clk            ),
 .g_resetn         (g_resetn         ),
